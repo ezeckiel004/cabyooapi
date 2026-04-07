@@ -1,5 +1,4 @@
 <?php
-// app/Http/Controllers/Api/ContactController.php
 
 namespace App\Http\Controllers\Api;
 
@@ -21,7 +20,7 @@ class ContactController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
             'phone' => 'nullable|string|max:20',
-            'subject' => 'required|string|max:255',
+            'subject' => 'nullable|string|max:255', // ✅ MODIFIÉ : nullable
             'message' => 'required|string|min:10',
         ]);
 
@@ -37,7 +36,7 @@ class ContactController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'phone' => $request->phone,
-                'subject' => $request->subject,
+                'subject' => $request->subject ?? null,
                 'message' => $request->message,
                 'ip_address' => $request->ip(),
                 'user_agent' => $request->userAgent(),
