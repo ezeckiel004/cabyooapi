@@ -41,6 +41,11 @@ Route::prefix('support')->group(function () {
     Route::post('/ticket', [App\Http\Controllers\Api\SupportController::class, 'submitTicket']);
 });
 
+Route::prefix('invest')->group(function () {
+    Route::post('/', [App\Http\Controllers\Api\InvestController::class, 'submit']);
+    Route::get('/{id}/status', [App\Http\Controllers\Api\InvestController::class, 'checkStatus']);
+});
+
 
 
 
@@ -172,6 +177,17 @@ Route::middleware('auth:sanctum')->group(function () {
             Route::get('/{user}/payment-initiate', [AdminUserController::class, 'initiateDriverPayment']); // 💳 Initier paiement
             Route::post('/{user}/payment-confirm', [AdminUserController::class, 'confirmDriverPayment']); // 💳 Confirmer paiement
         });
+
+        Route::prefix('investments')->group(function () {
+        Route::get('/', [App\Http\Controllers\Admin\InvestController::class, 'index']);
+        Route::get('/stats', [App\Http\Controllers\Admin\InvestController::class, 'stats']);
+        Route::get('/export', [App\Http\Controllers\Admin\InvestController::class, 'export']);
+        Route::get('/{id}', [App\Http\Controllers\Admin\InvestController::class, 'show']);
+        Route::put('/{id}', [App\Http\Controllers\Admin\InvestController::class, 'update']);
+        Route::post('/{id}/contacted', [App\Http\Controllers\Admin\InvestController::class, 'markAsContacted']);
+        Route::post('/{id}/archive', [App\Http\Controllers\Admin\InvestController::class, 'archive']);
+        Route::delete('/{id}', [App\Http\Controllers\Admin\InvestController::class, 'destroy']);
+    });
 
 
 
