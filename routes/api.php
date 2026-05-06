@@ -78,6 +78,11 @@ Route::prefix('vehicles')->group(function () {
 // Routes protégées par authentification Sanctum
 Route::middleware('auth:sanctum')->group(function () {
 
+    Route::get('/auth/me', [AuthController::class, 'me']);
+
+    Route::post('/auth/update-profile', [AuthController::class, 'updateProfile']);
+    Route::post('/auth/update-password', [AuthController::class, 'updatePassword']);
+
     // ============================================
     // ROUTES DRIVER (Récupérer les chauffeurs disponibles)
     // ============================================

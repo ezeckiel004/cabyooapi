@@ -63,31 +63,31 @@
         <div class="header">
             <h1>Merci pour votre intérêt</h1>
         </div>
-        
+
         <div class="content">
             <h2>Bonjour {{ $investment->first_name }},</h2>
-            
+
             <p>Nous accusons bonne réception de votre demande d'investissement pour Cabyoo.</p>
-            
+
             <div class="info-box">
                 <strong>📋 Récapitulatif de votre demande :</strong><br>
                 • Montant envisagé : {{ $investment->amount_range_formatted }}<br>
                 • Date de soumission : {{ $investment->created_at->format('d/m/Y à H:i') }}
             </div>
-            
+
             <p>Notre équipe dédiée aux investisseurs va étudier votre dossier et vous contactera dans les plus brefs délais (sous 48h ouvrées).</p>
-            
+
             <p>En attendant, n'hésitez pas à :</p>
             <ul>
                 <li>Visiter notre site web pour en savoir plus sur notre projet</li>
                 <li>Nous contacter directement au 07 66 72 82 85 pour toute question urgente</li>
             </ul>
-            
+
             <center>
                 <a href="https://cabyoo.com" class="btn">Découvrir Cabyoo</a>
             </center>
         </div>
-        
+
         <div class="footer">
             <p>© {{ date('Y') }} Cabyoo - Tous droits réservés</p>
             <p>6 Rue Maurice Hurel, Parc d'Activités de la Plaine, 31500 Toulouse</p>
